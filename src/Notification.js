@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { notificationTypes as types } from './constants';
 import styles from './Notification.css';
 import { ReactComponent as SuccessIcon } from './assets/icons/success.svg';
 import { ReactComponent as InfoIcon } from './assets/icons/info.svg';
@@ -31,7 +32,9 @@ const Notification = ({ options, close, style }) => {
         {options.title && <h2>{options.title}</h2>}
         <p>{options.content}</p>
       </main>
-      <a onClick={close}><ErrorIcon /></a>
+      {options.type !== types.LOADING && (
+        <a onClick={close}><ErrorIcon /></a>
+      )}
     </div>
   );
 };

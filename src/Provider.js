@@ -49,7 +49,7 @@ const Provider = ({ children }) => {
       }
     };
 
-    if (isNumeric(notification.options.timeout)) {
+    if (isNumeric(notification.options.timeout) && type !== types.LOADING) {
       const timeout = setTimeout(() => {
         removeNotification(notification);
         timeoutIDs.current = timeoutIDs.current.filter(tmId => tmId === timeout);
